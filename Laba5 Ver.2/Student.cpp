@@ -13,3 +13,9 @@ const std::string& Student::getNumberGroup() const { return m_numberGroup; }
 void Student::setSurname(const std::string& surname) { m_surname = surname; }
 void Student::setName(const std::string& name) { m_name = name; }
 void Student::setNumberGroup(const std::string& numberGroup) { m_numberGroup = numberGroup; }
+
+//Operator Overloading
+std::ostream& operator<<(std::ostream& os, const Student& student) {
+    os << student.getSurname() << " " << student.getName() << " " << student.getNumberGroup();
+    return os;
+}

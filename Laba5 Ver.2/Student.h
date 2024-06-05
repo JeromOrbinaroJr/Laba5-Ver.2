@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class Student {
 public:
@@ -19,6 +20,9 @@ public:
 	void setSurname(const std::string& surname);
 	void setName(const std::string& name);
 	void setNumberGroup(const std::string& numberGroup);
+
+	//Operator Overloading
+	friend std::ostream& operator<<(std::ostream& os, const Student& student);
 
 private:
 	std::string m_surname;
