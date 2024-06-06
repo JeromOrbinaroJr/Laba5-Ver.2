@@ -21,7 +21,7 @@
     <ClInclude Include="List.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Storage.h">
+    <ClInclude Include="Stack.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="List.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Storage.cpp">
+    <ClCompile Include="Stack.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

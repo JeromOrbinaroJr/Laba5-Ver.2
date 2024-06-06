@@ -20,10 +20,10 @@ public:
     void insert(const T& element);
 	void remove(int position); // УДАЛЕНИЕ ЭЛЕМЕНТА ИЗ СПИСКА
     void removeAll(); // УДАЛЕНИЕ ВСЕХ ЭЛЕМЕНТОВ ИЗ СПИСКА 
-    bool contains(const T& element) const; // ПРОВЕРКА НА НАХОЖДЕНИЕ ЭЛЕМЕНТА В СПИСКЕ
+    //bool contains(const T& element) const; // ПРОВЕРКА НА НАХОЖДЕНИЕ ЭЛЕМЕНТА В СПИСКЕ
 	T& at(int position);  // ПОЛУЧЕНИЕ ССЫЛКИ НА ЭЛЕМЕНТ ПО ИНДЕКСУ 
-	//void sort(); // СОРТИРОВКА ЭЛЕМЕНТОВ СПИСКА
 	int getSize() const; // ПОЛУЧЕНИЕ РАЗМЕРА СПИСКА
+    bool isEmpty() const;
 
 private:
 	struct Node
@@ -36,7 +36,8 @@ private:
 	int size;
 };
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //Constructors
 template<typename T>
@@ -94,9 +95,7 @@ List<T>& List<T>::operator=(const List<T>& other) {
 template<typename T>
 void List<T>::insert(const T& element, int position) {
     // Проверяем, что позиция в пределах списка
-    if (position < 0 || position > size) {
-        throw std::runtime_error("Invalid position");
-    }
+    if (position < 0 || position > size) { throw std::runtime_error("Invalid position"); }
 
     // Создаем новый узел с заданным элементом
     Node* newNode = new Node(element);
@@ -139,6 +138,7 @@ void List<T>::insert(const T& element) {
 
 template<typename T>
 void List<T>::remove(int position) {
+    if (isEmpty()) { throw std::runtime_error("Is empty"); }
     if (position < 0 || position >= size) { // Проверяем, что позиция находится в пределах списка
         throw std::runtime_error("Invalid position"); // Если позиция некорректна, выбрасываем исключение
     }
@@ -162,6 +162,7 @@ void List<T>::remove(int position) {
 
 template<typename T>
 void List<T>::removeAll() {
+    if (isEmpty()) { throw std::runtime_error("Is empty"); }
     while (head != nullptr) { // Пока список не пустой
         Node* temp = head; // Создаем временный указатель на голову списка
         head = head->next; // Перемещаем голову списка на следующий элемент
@@ -181,43 +182,25 @@ T& List<T>::at(int position) {
     return current->data; // Возвращаем данные текущего узла
 }
 
-
 //template<typename T>
-//void List<T>::sort() {
-//    if (size <= 1) return;
-//    bool swapped;
-//    Node* ptr1;
-//    Node* lptr = nullptr;
-//    do {
-//        swapped = false;
-//        ptr1 = head;
-//        while (ptr1->next != lptr) {
-//            if (ptr1->data > ptr1->next->data) {
-//                T temp = ptr1->data;
-//                ptr1->data = ptr1->next->data;
-//                ptr1->next->data = temp;
-//                swapped = true;
-//            }
-//            ptr1 = ptr1->next;
+//bool List<T>::contains(const T& element) const {
+//    Node* current = head; // Указатель для перебора элементов списка
+//    while (current != nullptr) {
+//        if (current->data == element) { // Сравниваем текущий элемент с заданным элементом
+//            return true; // Если элемент найден, возвращаем true
 //        }
-//        lptr = ptr1;
-//    } while (swapped);
+//        current = current->next; // Перемещаемся к следующему элементу списка
+//    }
+//    return false; // Если элемент не найден, возвращаем false
 //}
-
-template<typename T>
-bool List<T>::contains(const T& element) const {
-    Node* current = head; // Создаем указатель current и устанавливаем его на начало списка
-    while (current != nullptr) { // Пока не достигнут конец списка
-        if (current->data == element) { // Если значение текущего узла равно искомому элементу
-            return true; // Возвращаем true, так как элемент найден
-        }
-        current = current->next; // Переходим к следующему узлу списка
-    }
-    return false; // Если элемент не найден после проверки всех узлов, возвращаем false
-}
-
 
 template<typename T>
 int List<T>::getSize() const {
     return size;
 }
+
+template<typename T>
+bool List<T>::isEmpty() const {
+    return head == nullptr;
+}
+
