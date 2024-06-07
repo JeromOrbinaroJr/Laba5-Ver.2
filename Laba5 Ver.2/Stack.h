@@ -22,7 +22,7 @@ public:
 
 	int size() const;
 
-	//bool contains(const T& element) const; // опнбепйю мю опхясрярбхе щкелемрю б ярейе
+	bool contains(const T& element) const; // опнбепйю мю опхясрярбхе щкелемрю б ярейе
 
 	void merge(const Stack& other); // назедхмемхе дбсу ярейнб
 
@@ -67,10 +67,10 @@ int Stack<T>::size() const {
 	return list.getSize();
 }
 
-//template<typename T>
-//bool Stack<T>::contains(const T& element) const {
-//	return list.contains(element);
-//}
+template<typename T>
+bool Stack<T>::contains(const T& element) const {
+	return list.contains(element);
+}
 
 template<typename T>
 void Stack<T>::merge(const Stack& other) {

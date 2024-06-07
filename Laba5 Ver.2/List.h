@@ -31,7 +31,7 @@ public:
 
     bool isEmpty() const;
 
-
+    bool operator==(const List<T>& other) const;
 
 private:
 	struct Node
@@ -95,6 +95,24 @@ List<T>& List<T>::operator=(const List<T>& other) {
     return *this;
 }
 
+template<typename T>
+bool List<T>::operator==(const List<T>& other) const {
+    if (this->size != other.size) {
+        return false;
+    }
+
+    Node* current1 = this->head;
+    Node* current2 = other.head;
+
+    while (current1 && current2) {
+        if (current1->data != current2->data) {
+            return false;
+        }
+        current1 = current1->next;
+        current2 = current2->next;
+    }
+    return true;
+}
 
 //Methods
 template<typename T>
@@ -185,7 +203,7 @@ template<typename T>
 bool List<T>::contains(const T& element) const {
     Node* current = head;
     while (current != nullptr) {
-        if (current->data == element) {
+        if (element == current->data) {
             return true;
         }
         current = current->next;

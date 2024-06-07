@@ -13,6 +13,8 @@ int main() {
 	studentStack.push(student2);
 	studentStack.push(student3);
 
+	std::cout << studentStack.contains(student1);
+
 	studentStack.print();
 
 	return 0;
