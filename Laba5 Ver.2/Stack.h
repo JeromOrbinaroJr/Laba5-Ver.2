@@ -13,14 +13,23 @@ public:
 
 	//Methods
 	void push(const T& element); // днаюбкемхе щкелемрю б ярей
+
 	void pop(); // сдюкемхе онякедмецн щкелемрю хг ярейю
+
 	T& top(); // онксвемхе бепумецн щкелемрю ярейю
+
 	bool isEmpty() const;
+
 	int size() const;
+
 	//bool contains(const T& element) const; // опнбепйю мю опхясрярбхе щкелемрю б ярейе
+
 	void merge(const Stack& other); // назедхмемхе дбсу ярейнб
+
 	Stack<T> intersection(const Stack<T>& other) const; // оепеяевемхе дбсу ярейнб
+
 	Stack<T> addition(const Stack<T>& other) const; // днонкмемхе ярейнб (щкелемрш, бундъыхе б нямнбмни ярей, мн ме бундъыхе б ярей OTHER)
+
 	void print() const;
 
 private:
