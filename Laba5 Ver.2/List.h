@@ -23,13 +23,15 @@ public:
 
     void removeAll(); // сдюкемхе бяеу щкелемрнб хг яохяйю 
 
-    //bool contains(const T& element) const; // опнбепйю мю мюунфдемхе щкелемрю б яохяйе
+    bool contains(const T& element) const; // опнбепйю мю мюунфдемхе щкелемрю б яохяйе
 
 	T& at(int position);  // онксвемхе яяшкйх мю щкелемр он хмдейяс 
 
 	int getSize() const; // онксвемхе пюглепю яохяйю
 
     bool isEmpty() const;
+
+
 
 private:
 	struct Node
@@ -43,6 +45,7 @@ private:
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 //Constructors
@@ -178,17 +181,17 @@ T& List<T>::at(int position) {
     return current->data;
 }
 
-//template<typename T>
-//bool List<T>::contains(const T& element) const {
-//    Node* current = head;
-//    while (current != nullptr) {
-//        if (current->data == element) {
-//            return true;
-//        }
-//        current = current->next;
-//    }
-//    return false;
-//}
+template<typename T>
+bool List<T>::contains(const T& element) const {
+    Node* current = head;
+    while (current != nullptr) {
+        if (current->data == element) {
+            return true;
+        }
+        current = current->next;
+    }
+    return false;
+}
 
 template<typename T>
 int List<T>::getSize() const {
