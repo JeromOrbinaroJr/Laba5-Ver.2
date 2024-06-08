@@ -31,7 +31,8 @@ public:
 	int getSize() const; // œŒÀ”◊≈Õ»≈ –¿«Ã≈–¿ —œ»— ¿
 
     bool isEmpty() const;
-        
+
+
 private:
 	struct Node
 	{
@@ -44,7 +45,7 @@ private:
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// 
 //Constructors
 template<typename T>
 List<T>::List() : head(nullptr), size(0) {}
@@ -177,24 +178,14 @@ T& List<T>::at(int position) {
     return current->data;
 }
 
-//template<typename T>
-//bool List<T>::contains(const T& element) const {
-//    Node* current = head;
-//    while (current != nullptr) {
-//        if (current->data == element) {
-//            return true;
-//        }
-//        current = current->next;
-//    }
-//    return false;
-//}
-
 template<typename T>
 bool List<T>::contains(const T& element) const {
-    for (Node* current = head; current != nullptr; current = current->next) {
-        if (std::equal_to<T>()(current->data, element)) {
+    Node* current = head;
+    while (current != nullptr) {
+        if (current->data == element) {
             return true;
         }
+        current = current->next;
     }
     return false;
 }
