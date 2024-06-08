@@ -1,7 +1,6 @@
 #pragma once
 #include <stdexcept>
 #include <algorithm>
-#include <functional>
 
 template <typename T>
 class List {
@@ -40,12 +39,13 @@ private:
 		Node* next;
 		Node(const T& newData) : data(newData), next(nullptr) { }
 	};
+
 	Node* head;
 	int size;
 };
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Constructors
 template<typename T>
 List<T>::List() : head(nullptr), size(0) {}
@@ -80,7 +80,6 @@ List<T>& List<T>::operator=(const List<T>& other) {
             head = head->next;
             delete temp;
         }
-
         head = nullptr;
         size = 0;
 
@@ -115,7 +114,6 @@ void List<T>::insert(const T& element, int position) {
     ++size;
 }
 
-
 template<typename T>
 void List<T>::insert(const T& element) {
     Node* newNode = new Node(element);
@@ -131,7 +129,6 @@ void List<T>::insert(const T& element) {
     }
     ++size;
 }
-
 
 template<typename T>
 void List<T>::remove(int position) {
@@ -155,7 +152,6 @@ void List<T>::remove(int position) {
     --size;
 }
 
-
 template<typename T>
 void List<T>::removeAll() {
     if (isEmpty()) { throw std::runtime_error("Is empty"); }
@@ -167,9 +163,9 @@ void List<T>::removeAll() {
     size = 0;
 }
 
-
 template<typename T>
 T& List<T>::at(int position) {
+    if (isEmpty()) { throw std::runtime_error("Is empty"); }
     if (position < 0 || position >= size) { throw std::runtime_error("Invalid position"); }
     Node* current = head;
     for (int i = 0; i < position; ++i) {

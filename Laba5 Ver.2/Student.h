@@ -23,6 +23,7 @@ public:
 
 	//Operator Overloading
 	friend std::ostream& operator<<(std::ostream& os, const Student& student);
+	bool operator==(const Student& other) const;
 
 private:
 	std::string m_surname;

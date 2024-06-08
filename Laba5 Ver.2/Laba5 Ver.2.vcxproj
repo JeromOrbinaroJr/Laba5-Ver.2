@@ -133,9 +133,7 @@
     <ClInclude Include="Student.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

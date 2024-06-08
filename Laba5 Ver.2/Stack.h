@@ -24,7 +24,7 @@ public:
 
 	bool contains(const T& element) const; // опнбепйю мю опхясрярбхе щкелемрю б ярейе
 
-	void merge(const Stack& other); // назедхмемхе дбсу ярейнб
+	void merge(Stack& other); // назедхмемхе дбсу ярейнб
 
 	Stack<T> intersection(const Stack<T>& other) const; // оепеяевемхе дбсу ярейнб
 
@@ -73,7 +73,7 @@ bool Stack<T>::contains(const T& element) const {
 }
 
 template<typename T>
-void Stack<T>::merge(const Stack& other) {
+void Stack<T>::merge(Stack& other) {
 	if (other.isEmpty()) { throw std::runtime_error("Other stack is empty."); }
 	for (int i = 0; i < other.size(); ++i) {
 		push(other.top());

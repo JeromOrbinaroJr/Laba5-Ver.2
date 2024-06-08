@@ -19,3 +19,7 @@ std::ostream& operator<<(std::ostream& os, const Student& student) {
     os << student.getSurname() << " " << student.getName() << " " << student.getNumberGroup();
     return os;
 }
+
+bool Student::operator==(const Student& other) const {
+	return m_surname == other.m_surname && m_name == other.m_name && m_numberGroup == other.m_numberGroup;
+}
