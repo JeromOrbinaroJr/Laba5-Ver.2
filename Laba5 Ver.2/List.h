@@ -1,6 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <algorithm>
+#include <functional>
 
 template <typename T>
 class List {
@@ -30,9 +31,7 @@ public:
 	int getSize() const; // œŒÀ”◊≈Õ»≈ –¿«Ã≈–¿ —œ»— ¿
 
     bool isEmpty() const;
-
-    bool operator==(const List<T>& other) const;
-
+        
 private:
 	struct Node
 	{
@@ -45,8 +44,6 @@ private:
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 //Constructors
 template<typename T>
@@ -95,25 +92,6 @@ List<T>& List<T>::operator=(const List<T>& other) {
     return *this;
 }
 
-template<typename T>
-bool List<T>::operator==(const List<T>& other) const {
-    if (this->size != other.size) {
-        return false;
-    }
-
-    Node* current1 = this->head;
-    Node* current2 = other.head;
-
-    while (current1 && current2) {
-        if (current1->data != current2->data) {
-            return false;
-        }
-        current1 = current1->next;
-        current2 = current2->next;
-    }
-    return true;
-}
-
 //Methods
 template<typename T>
 void List<T>::insert(const T& element, int position) {
@@ -121,7 +99,7 @@ void List<T>::insert(const T& element, int position) {
 
     Node* newNode = new Node(element);
 
-    if (position == 0) {
+    if (position == 0 || position == size) {
         newNode->next = head;
         head = newNode;
     }
@@ -199,14 +177,24 @@ T& List<T>::at(int position) {
     return current->data;
 }
 
+//template<typename T>
+//bool List<T>::contains(const T& element) const {
+//    Node* current = head;
+//    while (current != nullptr) {
+//        if (current->data == element) {
+//            return true;
+//        }
+//        current = current->next;
+//    }
+//    return false;
+//}
+
 template<typename T>
 bool List<T>::contains(const T& element) const {
-    Node* current = head;
-    while (current != nullptr) {
-        if (element == current->data) {
+    for (Node* current = head; current != nullptr; current = current->next) {
+        if (std::equal_to<T>()(current->data, element)) {
             return true;
         }
-        current = current->next;
     }
     return false;
 }
