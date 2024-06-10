@@ -10,9 +10,18 @@ const std::string& Student::getName() const { return m_name; }
 const std::string& Student::getNumberGroup() const { return m_numberGroup; }
 
 //Setters
-void Student::setSurname(const std::string& surname) { m_surname = surname; }
-void Student::setName(const std::string& name) { m_name = name; }
-void Student::setNumberGroup(const std::string& numberGroup) { m_numberGroup = numberGroup; }
+void Student::setSurname(const std::string& surname) { 
+	if (surname == "" || surname == " ") { throw std::runtime_error("An empty string was passed"); }
+	m_surname = surname; 
+}
+void Student::setName(const std::string& name) {
+	if (name == "" || name == " ") { throw std::runtime_error("An empty string was passed"); }
+	m_name = name;
+}
+void Student::setNumberGroup(const std::string& numberGroup) {
+	if (numberGroup == "" || numberGroup == " ") { throw std::runtime_error("An empty string was passed"); }
+	m_numberGroup = numberGroup;
+}
 
 //Operator Overloading
 std::ostream& operator<<(std::ostream& os, const Student& student) {

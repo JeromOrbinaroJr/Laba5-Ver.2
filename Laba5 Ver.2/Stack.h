@@ -9,7 +9,7 @@ public:
 	Stack() {}
 
 	//Destructor
-	~Stack() {}
+	virtual ~Stack() {}
 
 	//Methods
 	void push(const T& element); // днаюбкемхе щкелемрю б ярей
